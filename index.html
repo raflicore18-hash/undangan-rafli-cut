@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="id">
 <head>
@@ -12,10 +13,17 @@ section{padding:70px 30px;text-align:center}.hero{min-height:100vh;display:flex;
 .hero .box{padding:35px 20px}.script{font-family:"Cormorant Garamond",serif;font-size:64px;line-height:.9;font-weight:500}.small{letter-spacing:4px;font-size:12px}.quote{font-family:"Cormorant Garamond",serif;font-size:19px;line-height:1.5;max-width:560px;margin:25px auto}
 h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;margin:10px 0}h2{font-size:42px}h3{font-size:28px}.names{font-family:"Cormorant Garamond",serif;font-size:44px}.amp{font-size:34px;margin:10px}.muted{line-height:1.8;color:#666}.card{background:#ebe6da;padding:35px 20px;margin:20px 0}.btn{display:inline-block;padding:13px 24px;border:1px solid #555;color:#333;text-decoration:none;margin-top:15px;font-size:12px;letter-spacing:2px}.timeline{text-align:left;max-width:560px;margin:auto}.timeline article{padding:18px 0;border-left:1px solid #aaa;padding-left:24px;margin-left:10px}.date{letter-spacing:2px;font-size:12px}.footer{background:#ddd6c8;padding:65px 25px}.coverbtn{margin-top:25px;border-color:white;color:white}.fade{opacity:.95}.arabic{font-size:25px;line-height:1.8}
 #countdown{font-family:"Cormorant Garamond",serif;font-size:28px;margin-top:18px}
+.music-btn{position:fixed;bottom:25px;right:25px;z-index:999;background:#3e403c;color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:20px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center}
 @media(max-width:600px){section{padding:55px 22px}.script{font-size:56px}.names{font-size:39px}}
 </style>
 </head>
 <body>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://files.catbox.moe/97a0sp.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵</button>
+
 <div class="page">
 <section class="hero">
 <div class="box">
@@ -23,7 +31,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;margin:10px 0}h2
 <div class="script">Rafli & Cut</div>
 <p class="quote">“What counts in making a happy marriage is not so much how compatible you are, but how you deal with incompatibility.”</p>
 <p>Kepada Yth.<br><b>Bapak / Ibu / Saudara/i</b></p>
-<a href="#undangan" class="btn coverbtn">BUKA UNDANGAN</a>
+<a href="#undangan" class="btn coverbtn" onclick="playMusic()">BUKA UNDANGAN</a>
 </div>
 </section>
 
@@ -37,7 +45,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;margin:10px 0}h2
 <p><b>Muhammad Ade Rafli</b><br>Putra Ketiga dari<br>Bapak Endra Gunawan dan Ibu Hernita</p>
 <div class="amp">&</div>
 <div class="names">Cut</div>
-<p><b>Cut Farida Zuhra</b><br>Putra Ketiga dari<br>Bapak H. Ansari dan Ibu Hartini</p>
+<p><b>Cut Farida Zuhra</b><br>Putri Ketiga dari<br>Bapak H. Ansari dan Ibu Hartini</p>
 </section>
 
 <section>
@@ -82,12 +90,31 @@ h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;margin:10px 0}h2
 <p>Senin, 26 Oktober 2026</p>
 </section>
 </div>
+
 <script>
 const target=new Date("2026-10-26T10:00:00+07:00").getTime();
 function tick(){let d=target-Date.now();if(d<=0){document.querySelector('#countdown').textContent='Hari Pernikahan';return}
 let day=Math.floor(d/86400000);d%=86400000;let h=Math.floor(d/3600000);d%=3600000;let m=Math.floor(d/60000);let s=Math.floor((d%60000)/1000);
 document.querySelector('#countdown').textContent=`${day} Hari  •  ${h} Jam  •  ${m} Menit  •  ${s} Detik`;}
 tick();setInterval(tick,1000);
+
+const music = document.getElementById('bgMusic');
+const btn = document.getElementById('musicBtn');
+
+function playMusic() {
+  music.play().catch(()=>{});
+  btn.textContent = '🎶';
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    btn.textContent = '🎶';
+  } else {
+    music.pause();
+    btn.textContent = '🔇';
+  }
+}
 </script>
 </body></html>
-  
+                                       
